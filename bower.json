@@ -1,0 +1,29 @@
+{
+  "name": "smart2-dashboard",
+  "version": "0.1.0",
+  "dependencies": {
+    "angular": "1.2.16",
+    "json3": "~3.3.1",
+    "es5-shim": "~2.3.0",
+    "jquery": "~2.1.0",
+    "bootstrap-sass-official": "~3.1.1",
+    "angular-sanitize": "1.2.16",
+    "angular-route": "1.2.16"
+  },
+  "devDependencies": {
+    "angular-mocks": "1.2.16",
+    "angular-scenario": "1.2.16"
+  },
+  "homepage": "https://github.com/eHealthAfrica/SMART2-Dashboard",
+  "authors": [
+    "eHealth Africa <http://ehealthafrica.org>"
+  ],
+  "description": "SMART2 Dashboard",
+  "keywords": [
+    "smart2",
+    "dashboard",
+    "ehealth"
+  ],
+  "license": "ISC",
+  "private": true
+}
