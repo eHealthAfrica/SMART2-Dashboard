@@ -9,7 +9,7 @@
  * N.B. the functions are not used directly in the app but saved in a view on CouchDB.
  */
 
-var work_completed = {
+var survey_work_completed_map_reduce = {
   map: function (doc) {
     if (!doc.registered_personnel) {
       return;
@@ -113,7 +113,7 @@ var work_completed = {
 
     if (stats.hh.n) {
       ['members', 'women', 'children'].forEach(function (prop) {
-        stats.hh[prop].mean = stats.hh[prop].n / stats.hh.n;
+        stats.hh[prop].mean = Math.round(stats.hh[prop].n / stats.hh.n * 100) / 100;
       });
     }
 
