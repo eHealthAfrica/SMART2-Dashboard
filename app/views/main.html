@@ -46,7 +46,7 @@
         <tr ng-repeat="row in rows">
           <td>{{row.key}}</td>
           <td>{{row.value.hh.n}}</td>
-          <td>TODO</td>
+          <td ng-bind-html="row.value.hh | stats"></td>
           <td ng-bind-html="row.value.hh.members | stats"></td>
           <td ng-bind-html="row.value.hh.women | stats"></td>
           <td ng-bind-html="row.value.hh.children | stats"></td>

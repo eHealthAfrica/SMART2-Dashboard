@@ -455,6 +455,6 @@ var docs = [
 ];
 
 var results = [
-  {clusters: 2, measured: {women: 4, children: 4}, hh: {n: 4, members: {n: 13, min: 2, max: 4, mean: 3.25}, women: {n: 4, min: 1, max: 1, mean: 1}, children: {n: 4, min: 0, max: 2, mean: 1}}},
-  {clusters: 1, measured: {women: 1, children: 6}, hh: {n: 3, members: {n: 12, min: 0, max: 10, mean: 4}, women: {n: 2, min: 0, max: 2, mean: 0.67}, children: {n: 7, min: 0, max: 5, mean: 2.33}}}
+  {clusters: 2, measured: {women: 4, children: 4}, hh: {n: 4, min: 1, max: 3, mean: 2, members: {n: 13, min: 2, max: 4, mean: 3.25}, women: {n: 4, min: 1, max: 1, mean: 1}, children: {n: 4, min: 0, max: 2, mean: 1}}},
+  {clusters: 1, measured: {women: 1, children: 6}, hh: {n: 3, min: 3, max: 3, mean: 3, members: {n: 12, min: 0, max: 10, mean: 4}, women: {n: 2, min: 0, max: 2, mean: 0.67}, children: {n: 7, min: 0, max: 5, mean: 2.33}}}
 ];

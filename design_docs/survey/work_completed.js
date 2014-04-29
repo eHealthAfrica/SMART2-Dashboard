@@ -76,6 +76,9 @@ var survey_work_completed_map_reduce = {
       },
       hh: {
         n: 0,
+        min: Infinity,
+        max: 0,
+        mean: 0,
         members: {
           n: 0,
           min: Infinity,
@@ -98,10 +101,16 @@ var survey_work_completed_map_reduce = {
     };
 
     values.forEach(function (value) {
+      // Women, Children measured
       stats.measured.women += value.measured.women;
       stats.measured.children += value.measured.children;
-      stats.hh.n += value.hh.length;
 
+      // HH per cluster
+      stats.hh.n += value.hh.length;
+      stats.hh.min = Math.min(stats.hh.min, value.hh.length);
+      stats.hh.max = Math.max(stats.hh.max, value.hh.length);
+
+      // Members, Women and Children per HH
       value.hh.forEach(function (hh) {
         ['members', 'women', 'children'].forEach(function (prop) {
           stats.hh[prop].n += hh[prop];
@@ -111,6 +120,11 @@ var survey_work_completed_map_reduce = {
       });
     });
 
+    // HH per cluster (mean)
+    if (stats.clusters)
+      stats.hh.mean = Math.round(stats.hh.n / stats.clusters * 100) / 100;
+
+    // Members, Women and Children per HH (mean)
     if (stats.hh.n) {
       ['members', 'women', 'children'].forEach(function (prop) {
         stats.hh[prop].mean = Math.round(stats.hh[prop].n / stats.hh.n * 100) / 100;
