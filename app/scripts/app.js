@@ -3,7 +3,8 @@
 angular
   .module('smart2App', [
     'ngSanitize',
-    'ngRoute'
+    'ngRoute',
+    'pouchdb'
   ])
   .config(function ($routeProvider) {
     $routeProvider
