@@ -1,0 +1,57 @@
+<div class="header">
+  <h3 class="text-muted">SMART2 Dashboard</h3>
+</div>
+
+<div class="row" ng-controller="WorkCompletedCtrl">
+  <div class="col-xs-12">
+    <h2>Survey work completed</h2>
+    <div class="alert alert-info" ng-show="loading">
+      Loading ...
+    </div>
+    <div class="alert alert-danger" ng-show="error">
+      Error loading data.
+    </div>
+    <table class="table table-bordered" ng-hide="loading || error">
+      <thead>
+        <tr>
+          <th>Team Number</th>
+          <th>Clusters completed</th>
+          <th>HH completed</th>
+          <th>Women measured</th>
+          <th>Children measured</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="row in rows">
+          <td>{{row.key}}</td>
+          <td>{{row.value.clusters}}</td>
+          <td>{{row.value.hh.n}}</td>
+          <td>{{row.value.measured.women}}</td>
+          <td>{{row.value.measured.children}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="table table-bordered" ng-hide="loading || error">
+      <thead>
+        <tr>
+          <th>Team Number</th>
+          <th>HH completed</th>
+          <th>HH per cluster</th>
+          <th>Members per HH</th>
+          <th>Women per HH</th>
+          <th>Children per HH</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="row in rows">
+          <td>{{row.key}}</td>
+          <td>{{row.value.hh.n}}</td>
+          <td ng-bind-html="row.value.hh | stats"></td>
+          <td ng-bind-html="row.value.hh.members | stats"></td>
+          <td ng-bind-html="row.value.hh.women | stats"></td>
+          <td ng-bind-html="row.value.hh.children | stats"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
