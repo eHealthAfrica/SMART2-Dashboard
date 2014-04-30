@@ -16,7 +16,7 @@ module.exports = function(config) {
       'app/bower_components/angular-sanitize/angular-sanitize.js',
       'app/bower_components/angular-route/angular-route.js',
       'app/bower_components/pouchdb/dist/pouchdb-nightly.js',
-      'design_docs/survey/work_completed.js',
+      'design_docs/**/*.js',
       'app/scripts/**/*.js',
       'test/mock/**/*.js',
       'test/spec/**/*.js'
