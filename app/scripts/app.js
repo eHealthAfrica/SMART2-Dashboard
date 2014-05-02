@@ -4,7 +4,8 @@ angular
   .module('smart2App', [
     'ngSanitize',
     'ngRoute',
-    'pouchdb'
+    'pouchdb',
+    'nvd3ChartDirectives'
   ])
   .config(function ($routeProvider) {
     $routeProvider
