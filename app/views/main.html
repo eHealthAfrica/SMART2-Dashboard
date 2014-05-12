@@ -4,54 +4,101 @@
 
 <div class="row" ng-controller="WorkCompletedCtrl">
   <div class="col-xs-12">
-    <h2>Survey work completed</h2>
-    <div class="alert alert-info" ng-show="loading">
-      Loading ...
+    <h2 class="page-header">Survey work completed</h2>
+    <div class="row" ng-show="loading || error">
+      <div class="col-xs-12">
+        <div class="alert alert-info" ng-show="loading">
+          Loading ...
+        </div>
+        <div class="alert alert-danger" ng-show="error">
+          Error loading data.
+        </div>
+      </div>
     </div>
-    <div class="alert alert-danger" ng-show="error">
-      Error loading data.
+    <div class="row" ng-hide="loading || error">
+      <div class="col-xs-12">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Team Number</th>
+              <th>Clusters completed</th>
+              <th>HH completed</th>
+              <th>Women measured</th>
+              <th>Children measured</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="row in rows">
+              <td>{{row.key}}</td>
+              <td>{{row.value.clusters}}</td>
+              <td>{{row.value.hh.n}}</td>
+              <td>{{row.value.measured.women}}</td>
+              <td>{{row.value.measured.children}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Team Number</th>
+              <th>HH completed</th>
+              <th>HH per cluster</th>
+              <th>Members per HH</th>
+              <th>Women per HH</th>
+              <th>Children per HH</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="row in rows">
+              <td>{{row.key}}</td>
+              <td>{{row.value.hh.n}}</td>
+              <td ng-bind-html="row.value.hh | stats"></td>
+              <td ng-bind-html="row.value.hh.members | stats"></td>
+              <td ng-bind-html="row.value.hh.women | stats"></td>
+              <td ng-bind-html="row.value.hh.children | stats"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-    <table class="table table-bordered" ng-hide="loading || error">
-      <thead>
-        <tr>
-          <th>Team Number</th>
-          <th>Clusters completed</th>
-          <th>HH completed</th>
-          <th>Women measured</th>
-          <th>Children measured</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="row in rows">
-          <td>{{row.key}}</td>
-          <td>{{row.value.clusters}}</td>
-          <td>{{row.value.hh.n}}</td>
-          <td>{{row.value.measured.women}}</td>
-          <td>{{row.value.measured.children}}</td>
-        </tr>
-      </tbody>
-    </table>
-    <table class="table table-bordered" ng-hide="loading || error">
-      <thead>
-        <tr>
-          <th>Team Number</th>
-          <th>HH completed</th>
-          <th>HH per cluster</th>
-          <th>Members per HH</th>
-          <th>Women per HH</th>
-          <th>Children per HH</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="row in rows">
-          <td>{{row.key}}</td>
-          <td>{{row.value.hh.n}}</td>
-          <td ng-bind-html="row.value.hh | stats"></td>
-          <td ng-bind-html="row.value.hh.members | stats"></td>
-          <td ng-bind-html="row.value.hh.women | stats"></td>
-          <td ng-bind-html="row.value.hh.children | stats"></td>
-        </tr>
-      </tbody>
-    </table>
+  </div>
+</div>
+
+<div class="row" ng-controller="DistributionOfAgeCtrl">
+  <div class="col-xs-12">
+    <h2 class="page-header">Distribution of Age</h2>
+    <div class="row" ng-show="loading || error">
+      <div class="col-xs-12">
+        <div class="alert alert-info" ng-show="loading">
+          Loading ...
+        </div>
+        <div class="alert alert-danger" ng-show="error">
+          Error loading data.
+        </div>
+      </div>
+    </div>
+    <div class="row" ng-hide="loading || error">
+      <div class="col-xs-12">
+        <div class="panel panel-primary">
+          <div class="panel-heading">Counts of children by age in months</div>
+          <div class="panel-body">
+            <nvd3-discrete-bar-chart data="children" showXAxis="true" showYAxis="true" height="400" staggerLabels="true">
+              <svg></svg>
+            </nvd3-discrete-bar-chart>
+          </div>
+          <div class="panel-footer">These data are from the child anthropometry data.</div>
+        </div>
+
+        <div class="panel panel-primary">
+          <div class="panel-heading">Counts of household members by age in years</div>
+          <div class="panel-body">
+            <nvd3-discrete-bar-chart class="small-x" data="members" showXAxis="true" showYAxis="true" height="400" staggerLabels="true">
+              <svg></svg>
+            </nvd3-discrete-bar-chart>
+          </div>
+          <div class="panel-footer">These data are from the household listing (all household members excluding those who have left or died).</div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
