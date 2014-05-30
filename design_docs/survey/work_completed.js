@@ -32,12 +32,13 @@ var survey_work_completed_map_reduce = {
         hh: []
       };
 
-      for (prop in day.households) {
+      for (var prop in day.households) {
         var hh = day.households[prop];
         var hhStats = {
           members: hh.mortalities.length + hh.individuals.length,
           women: 0,
-          children: 0
+          children: 0,
+          gpsloc: hh.gpsloc
         };
 
         hh.mortalities.forEach(function (id) {
@@ -96,7 +97,8 @@ var survey_work_completed_map_reduce = {
           min: Infinity,
           max: 0,
           mean: 0
-        }
+        },
+        gpslocs: []
       }
     };
 
@@ -117,6 +119,9 @@ var survey_work_completed_map_reduce = {
           stats.hh[prop].min = Math.min(stats.hh[prop].min, hh[prop]);
           stats.hh[prop].max = Math.max(stats.hh[prop].max, hh[prop]);
         });
+
+        if (hh.gpsloc && hh.gpsloc.lon !== undefined && hh.gpsloc.lat !== undefined)
+          stats.hh.gpslocs.push({lon: hh.gpsloc.lon, lat: hh.gpsloc.lat});
       });
     });
 
