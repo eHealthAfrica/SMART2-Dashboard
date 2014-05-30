@@ -94,3 +94,10 @@ body {
 .small-x svg .nv-x text {
   font-size: 0.6em;
 }
+
+/* Open Layers */
+/* WORKAROUND for vector layers not showing */
+.olMap > div > div:first-child {
+  width: 100%;
+  height: 100%;
+}

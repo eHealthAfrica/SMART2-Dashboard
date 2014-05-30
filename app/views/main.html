@@ -98,6 +98,27 @@
   </div>
 </div>
 
+<div class="row" ng-controller="MappingChecksCtrl">
+  <div class="col-xs-12">
+    <h2 class="page-header">Mapping Checks</h2>
+    <div class="row" ng-show="loading || error">
+      <div class="col-xs-12">
+        <div class="alert alert-info" ng-show="loading">
+          Loading ...
+        </div>
+        <div class="alert alert-danger" ng-show="error">
+          Error loading data.
+        </div>
+      </div>
+    </div>
+    <div class="row" ng-hide="loading || error">
+      <div class="col-xs-12">
+        <div id="mappingChecks" style="height: 450px;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="row" ng-controller="DistributionOfAgeCtrl">
   <div class="col-xs-12">
     <h2 class="page-header">Distribution of Age</h2>
